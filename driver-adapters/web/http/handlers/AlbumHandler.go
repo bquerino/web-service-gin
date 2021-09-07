@@ -5,7 +5,6 @@ import (
 	"mycompany.com/web-service-gin/core/ports"
 )
 
-
 //Driver adapter
 type HTTPHandler struct {
 	albumsService ports.AlbumService
@@ -17,13 +16,13 @@ func NewHTTPHandler(albumsService ports.AlbumService) *HTTPHandler {
 	}
 }
 
-func(hdl *HTTPHandler) Get(c *gin.Context){
-	album, err := hdl.albumsService.Get(c.Param("id"))
+func (hdl *HTTPHandler) Get(context *gin.Context) {
+	album, err := hdl.albumsService.Get(context.Param("id"))
 	if err != nil {
-		c.AbortWithStatusJSON(500, gin.H{"message": err.Error()})
+		context.AbortWithStatusJSON(500, gin.H{"message": err.Error()})
 		return
 	}
-	c.JSON(200, album)
+	context.JSON(200, album)
 }
 
 func (hdl *HTTPHandler) Create(context *gin.Context) {
@@ -35,5 +34,6 @@ func (hdl *HTTPHandler) Create(context *gin.Context) {
 		context.AbortWithStatusJSON(500, gin.H{"message": err})
 		return
 	}
+
 	context.JSON(200, BuildResponseCreate(album))
 }

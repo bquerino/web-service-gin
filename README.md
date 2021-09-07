@@ -5,6 +5,41 @@ This project aims to use the hexagonal architecture way to do things with GoLang
 To create this project I used the official documentation of GoLang that can be found here: 
 <https://golang.org/doc/tutorial/web-service-gin>
 
+## **How to run**
+
+### Prerequisites
+
+* An installation of Go 1.16 or later. For installation instructions, see Installing Go.
+* A command terminal.
+
+### Run the code
+
+Open your console, go inside the folder of the code and runs
+```shell
+go get .
+```
+
+After that you can run the follow command:
+```shell
+go run .
+```
+
+So you can curl now and create an Album as follows:
+```shell
+curl http://localhost:8080/albums \
+    --include \
+    --header "Content-Type: application/json" \
+    --request "POST" \
+    --data '{"title": "The Modern Sound of Betty Carter","artist": "Betty Carter","price": 49.99}'
+```
+
+After that you can get an Album using the ID that was generated before with this simple request:
+```shell
+curl http://localhost:8080/albums/{UUID_THAT_WAS_GENERATED_BEFORE} \
+    --header "Content-Type: application/json" \
+    --request "GET"
+```
+
 ## **Layers**
 
 In this section, I'll try to explain the layers of this project and how you can evolve from this point.
@@ -43,6 +78,8 @@ This layer basically is where we define the set of actions what our actors needs
 * Implement tests
 * Implement more adapters
 * Update the documentation with images
+
+---
 
 ## References
 
