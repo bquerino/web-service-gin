@@ -79,6 +79,8 @@ This layer basically is where we define the set of actions what our actors needs
 * Implement more adapters
 * Update the documentation with images
 
+---
+
 ## References
 
 * Hexagonal architecture - <https://alistair.cockburn.us/hexagonal-architecture/>

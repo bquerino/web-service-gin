@@ -34,5 +34,6 @@ func (hdl *HTTPHandler) Create(context *gin.Context) {
 		context.AbortWithStatusJSON(500, gin.H{"message": err})
 		return
 	}
+
 	context.JSON(200, BuildResponseCreate(album))
 }
