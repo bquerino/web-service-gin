@@ -16,8 +16,8 @@ func NewHTTPHandler(albumsService ports.AlbumService) *HTTPHandler {
 	}
 }
 
-func (hdl *HTTPHandler) Get(context *gin.Context) {
-	album, err := hdl.albumsService.Get(context.Param("id"))
+func (handler *HTTPHandler) Get(context *gin.Context) {
+	album, err := handler.albumsService.Get(context.Param("id"))
 	if err != nil {
 		context.AbortWithStatusJSON(500, gin.H{"message": err.Error()})
 		return
@@ -25,13 +25,19 @@ func (hdl *HTTPHandler) Get(context *gin.Context) {
 	context.JSON(200, album)
 }
 
-func (hdl *HTTPHandler) Create(context *gin.Context) {
+func (handler *HTTPHandler) Create(context *gin.Context) {
+
+	// Maps to Dto
 	body := BodyCreate{}
+
+	//Bind the context to a JSON structure
 	context.BindJSON(&body)
 
-	album, err := hdl.albumsService.Create(body.Artist, body.Title, body.Price)
+	album, err := handler.albumsService.Create(body.Artist, body.Title, body.Price)
+
+	// Check if you don't have any errors.
 	if err != nil {
-		context.AbortWithStatusJSON(500, gin.H{"message": err})
+		context.AbortWithStatusJSON(500, gin.H{"message": err.Error()})
 		return
 	}
 
