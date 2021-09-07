@@ -1,0 +1,56 @@
+{
+	"info": {
+		"_postman_id": "7f0569e9-19f6-4ba7-b906-d746b11ef0ec",
+		"name": "GoLang Studies",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET Albuns",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/albums/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "POST Albuns",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"The Modern Sound of Betty Carter volume 2\",\r\n    \"artist\": \"Betty Carter\",\r\n    \"price\": 49.99\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/albums/",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"albums",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
